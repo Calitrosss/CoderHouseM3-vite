@@ -1,7 +1,7 @@
 const productos = [
   {
     id: "1",
-    name: "Pan de Masa Madre 450-500 g",
+    name: "Pan de Masa Madre 450-500g",
     description:
       "Pan artesanal de masa madre , Elaborado con harina de trigo y centeno. Se caracteriza por su corteza crujiente, sabor y aromas tostados, con una miga suave.",
     stock: 10,
@@ -11,7 +11,7 @@ const productos = [
   },
   {
     id: "2",
-    name: "Baguette Tradicional 340 g",
+    name: "Baguette Tradicional 340g",
     description:
       "Pan Tradicional Francés, elaborado con masa madre , harina de trigo, centeno y semola . Su corteza es crocante y miga suave.",
     stock: 20,
@@ -21,7 +21,7 @@ const productos = [
   },
   {
     id: "3",
-    name: "Pan de Chocolate 90 g",
+    name: "Pan de Chocolate 90g",
     description: "Finas capas de masa rellenas de chocolate",
     stock: 30,
     price: 1490,
@@ -30,7 +30,7 @@ const productos = [
   },
   {
     id: "4",
-    name: "Espiral de Canela 85 g",
+    name: "Espiral de Canela 85g",
     description:
       "Espiral danesa muy crujiente, relleno de canela y pasta de azúcar rubia. Preparado según la tradición panadera y pastelera de Europa.",
     stock: 40,
