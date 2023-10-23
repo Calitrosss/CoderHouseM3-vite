@@ -18,7 +18,7 @@ const ItemDetailContainer = ({ greeting }) => {
         setProduct(resp);
       })
       .catch((err) => {
-        console.error("🚀 ~ file: ItemDetailContainer.jsx:16 ~ useEffect ~ err:", err);
+        console.error("🚀 ~ file: ItemDetailContainer.jsx:21 ~ useEffect ~ err:", err);
       });
   }, [itemId]);
 

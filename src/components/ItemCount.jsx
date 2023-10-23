@@ -8,7 +8,7 @@ const ItemCount = ({ initial, min, max }) => {
   const { count, increment, decrement } = useCount(initial, min, max);
 
   const onAdd = () => {
-    console.log("🚀 ~ file: ItemCount.jsx:11 ~ onAdd ~ count:", count);
+    console.warn("🚀 ~ file: ItemCount.jsx:11 ~ onAdd ~ count:", count);
   };
 
   return (
