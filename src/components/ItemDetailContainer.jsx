@@ -1,12 +1,13 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import { Center, SimpleGrid } from "@chakra-ui/react";
+import { Heading, SimpleGrid } from "@chakra-ui/react";
 
 import { getProductById } from "../asyncMock";
 import ItemDetail from "./ItemDetail";
 
-const ItemDetailContainer = () => {
+const ItemDetailContainer = ({ greeting }) => {
   const [product, setProduct] = useState([]);
 
   const { itemId } = useParams();
@@ -22,9 +23,14 @@ const ItemDetailContainer = () => {
   }, [itemId]);
 
   return (
-    <SimpleGrid spacing={4} p={4} autoColumns justifyContent="center">
-      <ItemDetail {...product} />
-    </SimpleGrid>
+    <>
+      <Heading as={"h1"} size={"lg"} textAlign={"center"} p={4}>
+        {greeting}
+      </Heading>
+      <SimpleGrid spacing={4} autoColumns justifyContent="center">
+        <ItemDetail {...product} />
+      </SimpleGrid>
+    </>
   );
 };
 

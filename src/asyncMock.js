@@ -65,11 +65,19 @@ const productos = [
   },
 ];
 
+const categorias = [
+  { id: "masamadre", name: "Masa Madre" },
+  { id: "masadulce", name: "Masa Dulce" },
+  { id: "temporada", name: "Temporada" },
+];
+
+const timeOutInterval = 500;
+
 export const getProducts = () => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(productos);
-    }, 2000);
+    }, timeOutInterval);
   });
 };
 
@@ -77,7 +85,7 @@ export const getProductsByCategory = (categoryId) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(productos.filter((producto) => producto.category === categoryId));
-    }, 2000);
+    }, timeOutInterval);
   });
 };
 
@@ -85,6 +93,14 @@ export const getProductById = (productId) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(productos.find((producto) => producto.id === productId));
-    }, 2000);
+    }, timeOutInterval);
+  });
+};
+
+export const getCategoryById = (categoryId) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(categorias.find((categoria) => categoria.id === categoryId));
+    }, timeOutInterval);
   });
 };
