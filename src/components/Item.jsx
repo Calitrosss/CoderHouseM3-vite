@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import { Link } from "react-router-dom";
+
 import {
   Card,
   CardHeader,
@@ -12,7 +14,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 
-const Item = ({ title, price, pictureUrl }) => {
+const Item = ({ id, title, price, pictureUrl }) => {
   return (
     <Card maxW="md">
       <CardHeader>
@@ -37,7 +39,9 @@ const Item = ({ title, price, pictureUrl }) => {
           },
         }}
       >
-        <Button flex="1">Ver detalle</Button>
+        <Button flex="1">
+          <Link to={`/item/${id}`}>Ver detalle</Link>
+        </Button>
       </CardFooter>
     </Card>
   );

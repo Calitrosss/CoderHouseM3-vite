@@ -1,4 +1,16 @@
-import { Flex, Box, Spacer, Container, Wrap, Link, WrapItem, Image } from "@chakra-ui/react";
+import { NavLink } from "react-router-dom";
+
+import {
+  Flex,
+  Box,
+  Spacer,
+  Container,
+  Wrap,
+  Link as ChakraLink,
+  WrapItem,
+  Image,
+} from "@chakra-ui/react";
+
 import BrandImg from "../assets/brand.svg";
 import CartWidget from "./CartWidget";
 
@@ -9,22 +21,42 @@ const NavBar = () => {
         <Box>
           <Flex wrap={"wrap"} alignItems={"center"}>
             <Image src={BrandImg} alt="Panadería Artesanal" boxSize={"50px"} />
-            <Link>Panadería Artesanal</Link>
+            <ChakraLink as={NavLink} to={`/`}>
+              Panadería Artesanal
+            </ChakraLink>
           </Flex>
         </Box>
         <Spacer />
         <Box>
           <Wrap>
             <WrapItem>
-              <Link>Masa Madre</Link>
+              <ChakraLink
+                as={NavLink}
+                to={`/category/masamadre`}
+                _activeLink={{ fontWeight: "bold" }}
+              >
+                Masa Madre
+              </ChakraLink>
             </WrapItem>
             <Spacer />
             <WrapItem>
-              <Link>Masa Dulce</Link>
+              <ChakraLink
+                as={NavLink}
+                to={`/category/masadulce`}
+                _activeLink={{ fontWeight: "bold" }}
+              >
+                Masa Dulce
+              </ChakraLink>
             </WrapItem>
             <Spacer />
             <WrapItem>
-              <Link>Temporada</Link>
+              <ChakraLink
+                as={NavLink}
+                to={`/category/temporada`}
+                _activeLink={{ fontWeight: "bold" }}
+              >
+                Temporada
+              </ChakraLink>
             </WrapItem>
           </Wrap>
         </Box>

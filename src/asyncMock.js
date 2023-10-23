@@ -73,6 +73,14 @@ export const getProducts = () => {
   });
 };
 
+export const getProductsByCategory = (categoryId) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(productos.filter((producto) => producto.category === categoryId));
+    }, 2000);
+  });
+};
+
 export const getProductById = (productId) => {
   return new Promise((resolve) => {
     setTimeout(() => {
