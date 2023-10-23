@@ -12,21 +12,21 @@ import {
   Box,
 } from "@chakra-ui/react";
 
-const Item = ({ name, price, img }) => {
+const Item = ({ title, price, pictureUrl }) => {
   return (
     <Card maxW="md">
       <CardHeader>
         <Flex spacing="4">
           <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
             <Box>
-              <Heading size="sm">{name}</Heading>
+              <Heading size="sm">{title}</Heading>
               <Text>Precio: ${price}</Text>
             </Box>
           </Flex>
         </Flex>
       </CardHeader>
       <CardBody>
-        <Image src={img} alt={name} maxH={{ base: "100%", sm: "200px" }} />
+        <Image src={pictureUrl} alt={title} maxH={{ base: "100%", sm: "200px" }} />
       </CardBody>
       <CardFooter
         justify="space-between"
@@ -37,9 +37,7 @@ const Item = ({ name, price, img }) => {
           },
         }}
       >
-        <Button flex="1" variant="ghost">
-          Ver detalle
-        </Button>
+        <Button flex="1">Ver detalle</Button>
       </CardFooter>
     </Card>
   );
