@@ -11,6 +11,15 @@ import {
   Link as ChakraLink,
   WrapItem,
   Image,
+  useDisclosure,
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
 } from "@chakra-ui/react";
 
 import BrandImg from "../assets/brand.svg";
@@ -19,6 +28,15 @@ import { CartContext } from "../contexts/CartContext";
 
 const NavBar = () => {
   const { cartCant } = useContext(CartContext);
+
+  const handleCartClick = (e) => {
+    if (cartCant === 0) {
+      e.preventDefault();
+      onOpen();
+    }
+  };
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Container maxW={"full"} bg={"#FBD38D"} p={4}>
@@ -66,10 +84,24 @@ const NavBar = () => {
           </Wrap>
         </Box>
         <Spacer />
-        <Box as={NavLink} to={"/cart"}>
+        <Box as={NavLink} to={"/cart"} onClick={handleCartClick}>
           <CartWidget itemsCount={cartCant} />
         </Box>
       </Flex>
+
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>El carrito está vacío</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>Puedes ir a nuestros productos y empezar a agregar.</ModalBody>
+          <ModalFooter>
+            <Button colorScheme="blue" onClick={onClose} as={NavLink} to={"/"}>
+              Ir a nuestros productos
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Container>
   );
 };
