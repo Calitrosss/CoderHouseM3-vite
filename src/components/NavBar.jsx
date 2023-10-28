@@ -1,3 +1,5 @@
+import { useContext } from "react";
+
 import { NavLink } from "react-router-dom";
 
 import {
@@ -13,8 +15,11 @@ import {
 
 import BrandImg from "../assets/brand.svg";
 import CartWidget from "./CartWidget";
+import { CartContext } from "../contexts/CartContext";
 
 const NavBar = () => {
+  const { cartCant } = useContext(CartContext);
+
   return (
     <Container maxW={"full"} bg={"#FBD38D"} p={4}>
       <Flex alignItems={"center"}>
@@ -62,7 +67,7 @@ const NavBar = () => {
         </Box>
         <Spacer />
         <Box as={NavLink} to={"/cart"}>
-          <CartWidget />
+          <CartWidget itemsCount={cartCant} />
         </Box>
       </Flex>
     </Container>

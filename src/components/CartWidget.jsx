@@ -6,7 +6,7 @@ const CartWidget = ({ itemsCount }) => {
   return (
     <Tag>
       <Image src={BasketImg} alt="Basket Image" boxSize={"50px"} ml={-1} mr={2} />
-      <TagLabel>{itemsCount || 0}</TagLabel>
+      <TagLabel>{itemsCount}</TagLabel>
     </Tag>
   );
 };
