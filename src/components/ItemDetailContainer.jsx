@@ -6,21 +6,30 @@ import { Heading, SimpleGrid } from "@chakra-ui/react";
 
 import { getProductById } from "../asyncMock";
 import ItemDetail from "./ItemDetail";
+import Loader from "./Loader";
 
 const ItemDetailContainer = ({ greeting }) => {
   const [product, setProduct] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const { itemId } = useParams();
 
   useEffect(() => {
+    setLoading(true);
+
     getProductById(itemId)
       .then((resp) => {
         setProduct(resp);
+        setLoading(false);
       })
       .catch((err) => {
         console.error("🚀 ~ file: ItemDetailContainer.jsx:21 ~ useEffect ~ err:", err);
       });
   }, [itemId]);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <>
