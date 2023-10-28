@@ -61,7 +61,7 @@ const NavBar = () => {
           </Wrap>
         </Box>
         <Spacer />
-        <Box>
+        <Box as={NavLink} to={"/cart"}>
           <CartWidget />
         </Box>
       </Flex>

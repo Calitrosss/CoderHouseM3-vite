@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import {
@@ -15,12 +15,26 @@ import {
 } from "@chakra-ui/react";
 
 import ItemCount from "../components/ItemCount";
+import { CartContext } from "../contexts/CartContext";
 
-const ItemDetail = ({ title, description, price, stock, pictureUrl }) => {
+const ItemDetail = ({ id, title, description, price, stock, pictureUrl }) => {
   const [quantityAdded, setQuantityAdded] = useState(0);
+
+  const { addItem } = useContext(CartContext);
 
   const handleOnAdd = (quantity) => {
     setQuantityAdded(quantity);
+
+    const item = {
+      id,
+      title,
+      description,
+      price,
+      stock,
+      pictureUrl,
+    };
+
+    addItem(item, quantity);
   };
 
   return (
