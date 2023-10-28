@@ -1,9 +1,28 @@
 /* eslint-disable react/prop-types */
-import { Card, CardBody, Heading, Text, Image, CardFooter, Stack, Divider } from "@chakra-ui/react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
+import {
+  Card,
+  CardBody,
+  Heading,
+  Text,
+  Image,
+  CardFooter,
+  Stack,
+  Divider,
+  Button,
+} from "@chakra-ui/react";
 
 import ItemCount from "../components/ItemCount";
 
 const ItemDetail = ({ title, description, price, stock, pictureUrl }) => {
+  const [quantityAdded, setQuantityAdded] = useState(0);
+
+  const handleOnAdd = (quantity) => {
+    setQuantityAdded(quantity);
+  };
+
   return (
     <Card maxW="sm">
       <CardBody>
@@ -18,8 +37,16 @@ const ItemDetail = ({ title, description, price, stock, pictureUrl }) => {
       </CardBody>
       <Divider />
       <CardFooter alignItems="center" flexDirection="column" gap={2}>
-        <Text fontSize="sm">(Disponible: {stock})</Text>
-        <ItemCount initial={1} min={1} max={stock} />
+        {quantityAdded > 0 ? (
+          <Button as={Link} to={"/cart"}>
+            Terminar compra
+          </Button>
+        ) : (
+          <>
+            <Text fontSize="sm">(Disponible: {stock})</Text>
+            <ItemCount initial={1} max={stock} onAdd={handleOnAdd} />
+          </>
+        )}
       </CardFooter>
     </Card>
   );

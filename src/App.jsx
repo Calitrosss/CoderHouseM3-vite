@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import { Container, Heading } from "@chakra-ui/react";
+
 import NavBar from "./components/NavBar";
 import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
@@ -21,7 +23,16 @@ function App() {
             path="/item/:itemId"
             element={<ItemDetailContainer greeting="Detalle del producto" />}
           />
-          <Route path="*" element={<h1>404 NOT FOUND</h1>} />
+          <Route
+            path="*"
+            element={
+              <Container>
+                <Heading as={"h1"} size={"lg"} textAlign={"center"} p={4}>
+                  404 NOT FOUND
+                </Heading>
+              </Container>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>

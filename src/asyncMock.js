@@ -15,7 +15,7 @@ const productos = [
     title: "Baguette Tradicional 340g",
     description:
       "Pan Tradicional Francés, elaborado con masa madre , harina de trigo, centeno y semola . Su corteza es crocante y miga suave.",
-    stock: 20,
+    stock: 5,
     price: 1490,
     category: "masamadre",
     pictureUrl:
@@ -25,7 +25,7 @@ const productos = [
     id: "3",
     title: "Pan de Chocolate 90g",
     description: "Finas capas de masa rellenas de chocolate",
-    stock: 30,
+    stock: 8,
     price: 1490,
     category: "masadulce",
     pictureUrl:
@@ -36,7 +36,7 @@ const productos = [
     title: "Espiral de Canela 85g",
     description:
       "Espiral danesa muy crujiente, relleno de canela y pasta de azúcar rubia. Preparado según la tradición panadera y pastelera de Europa.",
-    stock: 40,
+    stock: 3,
     price: 2690,
     category: "masadulce",
     pictureUrl:
@@ -47,7 +47,7 @@ const productos = [
     title: "Pizza Italita Masa Madre Italita, 2 a 3 porciones",
     description:
       "Pizza artesanal elaborada con masa madre, harina de trigo, salsa de tomates, mozzarella, ricotta, pepperoni, champiñon, aceitunas negras, y albahaca. De textura esponjosa, aireada y con una base crocante. Tamaño 32 cm (redonda). Producto congelado. Se debe hornear a 200° por 15 - 20 minutos.",
-    stock: 20,
+    stock: 6,
     price: 9990,
     category: "temporada",
     pictureUrl:
@@ -57,7 +57,7 @@ const productos = [
     id: "6",
     title: "Pizza pepperoni La Local, de 4 a 6 porciones",
     description: "Masa con 24 horas de fermentación, salsa pomodoro, queso mozzarella y pepperoni.",
-    stock: 50,
+    stock: 5,
     price: 9990,
     category: "temporada",
     pictureUrl:
