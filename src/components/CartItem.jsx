@@ -14,12 +14,7 @@ const CartItem = ({ id, title, price, pictureUrl, quantity, onClick }) => {
       </CardBody>
 
       <CardFooter alignItems={"center"}>
-        <Button
-          variant="solid"
-          colorScheme="blue"
-          leftIcon={<DeleteIcon />}
-          onClick={() => onClick(id)}
-        >
+        <Button variant="solid" leftIcon={<DeleteIcon />} onClick={() => onClick(id)}>
           Quitar
         </Button>
       </CardFooter>
