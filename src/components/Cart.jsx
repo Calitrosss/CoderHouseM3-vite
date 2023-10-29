@@ -55,6 +55,11 @@ const Cart = () => {
         >
           Vaciar carrito
         </Button>
+        {cartCant === 0 && (
+          <Button colorScheme="blue" as={NavLink} to={"/"}>
+            Ir a nuestros productos
+          </Button>
+        )}
       </SimpleGrid>
     </>
   );
