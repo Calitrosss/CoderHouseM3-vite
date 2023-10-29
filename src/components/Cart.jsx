@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { NavLink } from "react-router-dom";
 
 import {
   Button,
@@ -40,7 +41,7 @@ const Cart = () => {
             </Stack>
           </CardBody>
           <CardFooter>
-            <Button colorScheme="blue" isDisabled={!cartCant}>
+            <Button colorScheme="blue" as={NavLink} to={"/checkout"} isDisabled={!cartCant}>
               Finalizar Compra
             </Button>
           </CardFooter>
