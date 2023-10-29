@@ -26,7 +26,7 @@ const ItemListContainer = ({ greeting }) => {
         setLoading(false);
       })
       .catch((err) => {
-        console.error("🚀 ~ file: ItemListContainer.jsx:24 ~ useEffect ~ err:", err);
+        console.error(err);
       });
 
     if (categoryId) {
@@ -35,7 +35,7 @@ const ItemListContainer = ({ greeting }) => {
           setCategory(resp.name);
         })
         .catch((err) => {
-          console.error("🚀 ~ file: ItemListContainer.jsx:33 ~ useEffect ~ err:", err);
+          console.error(err);
         });
     } else {
       setCategory("Especialidad");

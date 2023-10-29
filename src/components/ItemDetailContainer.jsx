@@ -23,7 +23,7 @@ const ItemDetailContainer = ({ greeting }) => {
         setLoading(false);
       })
       .catch((err) => {
-        console.error("🚀 ~ file: ItemDetailContainer.jsx:21 ~ useEffect ~ err:", err);
+        console.error(err);
       });
   }, [itemId]);
 
