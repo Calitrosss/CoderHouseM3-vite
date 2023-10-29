@@ -83,9 +83,6 @@ export const CartProvider = ({ children }) => {
         addItem,
         removeItem,
         clearCart,
-        showInfo,
-        showSuccess,
-        showError,
       }}
     >
       {children}
