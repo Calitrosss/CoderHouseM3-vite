@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD9BZPUQUjqIz70sgnh0Xj_iu-gE9iV9Io",
@@ -10,3 +11,9 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+
+export const db = getFirestore(app);
+
+export const itemCollection = "items";
+export const categoryCollection = "categories";
+export const orderCollection = "orders";
