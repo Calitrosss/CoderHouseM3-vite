@@ -1,12 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import { Heading, SimpleGrid } from "@chakra-ui/react";
 
-import { getProductById } from "../asyncMock";
 import ItemDetail from "./ItemDetail";
 import Loader from "./Loader";
+
+import { getDoc, doc } from "firebase/firestore";
+import { db, itemCollection } from "../services/firebase/firebaseConfig";
 
 const ItemDetailContainer = ({ greeting }) => {
   const [product, setProduct] = useState([]);
@@ -14,21 +17,33 @@ const ItemDetailContainer = ({ greeting }) => {
 
   const { itemId } = useParams();
 
-  useEffect(() => {
-    setLoading(true);
+  const getProductById = async () => {
+    try {
+      const q = doc(db, itemCollection, itemId);
+      const querySnapshot = await getDoc(q);
+      const dataFromFirestore = querySnapshot.data();
+      setProduct({ id: itemId, ...dataFromFirestore });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    getProductById(itemId)
-      .then((resp) => {
-        setProduct(resp);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+  useEffect(() => {
+    getProductById();
   }, [itemId]);
 
   if (loading) {
     return <Loader />;
+  }
+
+  if (!product.title) {
+    return (
+      <Heading as={"h1"} size={"lg"} textAlign={"center"} p={4}>
+        Producto no encontrado
+      </Heading>
+    );
   }
 
   return (
