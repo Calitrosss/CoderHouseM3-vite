@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import { Heading, SimpleGrid } from "@chakra-ui/react";
+import { Heading, SimpleGrid, Button } from "@chakra-ui/react";
+import { NavLink } from "react-router-dom";
 
 import ItemDetail from "./ItemDetail";
 import Loader from "./Loader";
@@ -45,9 +46,16 @@ const ItemDetailContainer = ({ greeting }) => {
 
   if (!product.id) {
     return (
-      <Heading as={"h1"} size={"lg"} textAlign={"center"} p={4}>
-        Producto no encontrado
-      </Heading>
+      <>
+        <Heading as={"h1"} size={"lg"} textAlign={"center"} p={4}>
+          Producto no encontrado
+        </Heading>
+        <SimpleGrid columns={1} spacing={4} maxW={"sm"} mb={10} mx={"auto"}>
+          <Button colorScheme="blue" as={NavLink} to={"/"}>
+            Ir a nuestros productos
+          </Button>
+        </SimpleGrid>
+      </>
     );
   }
 
