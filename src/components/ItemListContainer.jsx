@@ -8,7 +8,7 @@ import { Heading } from "@chakra-ui/react";
 import ItemList from "./ItemList";
 import Loader from "./Loader";
 
-import { getDocs, collection, query, where, getDoc, doc } from "firebase/firestore";
+import { getDocs, collection, query, where, orderBy, getDoc, doc } from "firebase/firestore";
 import { db, itemCollection, categoryCollection } from "../services/firebase/firebaseConfig";
 
 const ItemListContainer = ({ greeting }) => {
@@ -36,7 +36,7 @@ const ItemListContainer = ({ greeting }) => {
         dataFromFirestore = querySnapshot.data();
         setCategory(dataFromFirestore.name);
       } else {
-        const q = collection(db, itemCollection);
+        const q = query(collection(db, itemCollection), orderBy("category"));
         const querySnapshot = await getDocs(q);
         const dataFromFirestore = querySnapshot.docs.map((item) => ({
           id: item.id,

@@ -21,8 +21,13 @@ const ItemDetailContainer = ({ greeting }) => {
     try {
       const q = doc(db, itemCollection, itemId);
       const querySnapshot = await getDoc(q);
-      const dataFromFirestore = querySnapshot.data();
-      setProduct({ id: itemId, ...dataFromFirestore });
+
+      if (querySnapshot.exists()) {
+        const dataFromFirestore = querySnapshot.data();
+        setProduct({ id: itemId, ...dataFromFirestore });
+      } else {
+        setProduct({});
+      }
     } catch (error) {
       console.error(error);
     } finally {
@@ -38,7 +43,7 @@ const ItemDetailContainer = ({ greeting }) => {
     return <Loader />;
   }
 
-  if (!product.title) {
+  if (!product.id) {
     return (
       <Heading as={"h1"} size={"lg"} textAlign={"center"} p={4}>
         Producto no encontrado
