@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import {
   Card,
@@ -21,6 +21,8 @@ const ItemDetail = ({ id, title, description, price, stock, pictureUrl }) => {
   const [quantityAdded, setQuantityAdded] = useState(0);
 
   const { addItem } = useContext(CartContext);
+
+  const navigate = useNavigate();
 
   const handleOnAdd = (quantity) => {
     setQuantityAdded(quantity);
@@ -52,7 +54,7 @@ const ItemDetail = ({ id, title, description, price, stock, pictureUrl }) => {
       <Divider />
       <CardFooter alignItems="center" flexDirection="column" gap={2}>
         {quantityAdded > 0 ? (
-          <Button as={Link} to={"/cart"}>
+          <Button as={Link} to={"/cart"} w="100%" maxW="70%">
             Terminar compra
           </Button>
         ) : (
@@ -61,6 +63,16 @@ const ItemDetail = ({ id, title, description, price, stock, pictureUrl }) => {
             <ItemCount initial={1} max={stock} onAdd={handleOnAdd} />
           </>
         )}
+        <Button
+          variant={"outline"}
+          w="100%"
+          maxW="70%"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          Regresar
+        </Button>
       </CardFooter>
     </Card>
   );
