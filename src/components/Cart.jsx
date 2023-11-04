@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import {
@@ -15,9 +15,16 @@ import {
 
 import { CartContext } from "../contexts/CartContext";
 import CartItem from "./CartItem";
+import CheckOut from "./CheckOut";
 
 const Cart = () => {
   const { cart, cartCant, cartTotal, removeItem, clearCart } = useContext(CartContext);
+
+  const [showCheckOut, setShowCheckOut] = useState(false);
+
+  const handleChekOutButton = () => {
+    setShowCheckOut(showCheckOut ? false : true);
+  };
 
   return (
     <>
@@ -26,7 +33,7 @@ const Cart = () => {
       </Heading>
       <SimpleGrid columns={1} spacing={4} maxW={"container.md"} mb={10} mx={"auto"}>
         {cart.map((p) => {
-          return <CartItem key={p.id} {...p} onClick={removeItem} />;
+          return <CartItem key={p.id} {...p} onClick={removeItem} isDisabled={showCheckOut} />;
         })}
         <Card direction={{ base: "column", sm: "row" }} variant={"filled"} alignItems={"center"}>
           <CardHeader>
@@ -41,25 +48,30 @@ const Cart = () => {
             </Stack>
           </CardBody>
           <CardFooter>
-            <Button colorScheme="blue" as={NavLink} to={"/checkout"} isDisabled={!cartCant}>
-              Finalizar Compra
-            </Button>
+            {showCheckOut || (
+              <Button colorScheme="blue" isDisabled={!cartCant} onClick={handleChekOutButton}>
+                Finalizar Compra
+              </Button>
+            )}
           </CardFooter>
         </Card>
-        <Button
-          colorScheme="red"
-          maxW={"fit-content"}
-          margin="auto"
-          onClick={clearCart}
-          isDisabled={!cartCant}
-        >
-          Vaciar carrito
-        </Button>
+        {showCheckOut || (
+          <Button
+            colorScheme="red"
+            maxW={"fit-content"}
+            margin="auto"
+            onClick={clearCart}
+            isDisabled={!cartCant}
+          >
+            Vaciar carrito
+          </Button>
+        )}
         {cartCant === 0 && (
           <Button colorScheme="blue" as={NavLink} to={"/"}>
             Ir a nuestros productos
           </Button>
         )}
+        {showCheckOut && <CheckOut onCancel={handleChekOutButton} />}
       </SimpleGrid>
     </>
   );

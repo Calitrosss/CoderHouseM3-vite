@@ -46,9 +46,21 @@ const ItemDetail = ({ id, title, description, price, stock, pictureUrl }) => {
         <Stack mt="6" spacing="3">
           <Heading size="md">{title}</Heading>
           <Text>{description}</Text>
-          <Text color="blue.600" fontSize="2xl">
-            ${price}
-          </Text>
+          <Stack direction={"row"} justifyContent={"space-between"}>
+            <Text color="blue.600" fontSize="2xl">
+              ${price}
+            </Text>
+            <Button
+              variant={"outline"}
+              // w="100%"
+              // maxW="70%"
+              onClick={() => {
+                navigate(-1);
+              }}
+            >
+              Regresar
+            </Button>
+          </Stack>
         </Stack>
       </CardBody>
       <Divider />
@@ -63,16 +75,6 @@ const ItemDetail = ({ id, title, description, price, stock, pictureUrl }) => {
             <ItemCount initial={1} max={stock} onAdd={handleOnAdd} />
           </>
         )}
-        <Button
-          variant={"outline"}
-          w="100%"
-          maxW="70%"
-          onClick={() => {
-            navigate(-1);
-          }}
-        >
-          Regresar
-        </Button>
       </CardFooter>
     </Card>
   );

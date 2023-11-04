@@ -2,7 +2,7 @@
 import { Card, CardBody, CardFooter, Image, Heading, Text, Button } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
 
-const CartItem = ({ id, title, price, pictureUrl, quantity, onClick }) => {
+const CartItem = ({ id, title, price, pictureUrl, quantity, onClick, isDisabled }) => {
   return (
     <Card direction={{ base: "column", sm: "row" }} overflow="hidden" variant="outline">
       <Image objectFit="cover" maxW={{ base: "100%", sm: "200px" }} src={pictureUrl} alt={title} />
@@ -14,7 +14,12 @@ const CartItem = ({ id, title, price, pictureUrl, quantity, onClick }) => {
       </CardBody>
 
       <CardFooter alignItems={"center"}>
-        <Button variant="solid" leftIcon={<DeleteIcon />} onClick={() => onClick(id)}>
+        <Button
+          variant="solid"
+          leftIcon={<DeleteIcon />}
+          onClick={() => onClick(id)}
+          isDisabled={isDisabled}
+        >
           Quitar
         </Button>
       </CardFooter>
