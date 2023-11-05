@@ -21,7 +21,7 @@ export const CartProvider = ({ children }) => {
       setCart((prev) => [...prev, { ...item, quantity }]);
       setCartCant((prev) => prev + quantity);
       setCartTotal((prev) => prev + item.price * quantity);
-      showSuccess("El producto fue agregado");
+      showInfo("El producto fue agregado");
     } else {
       showError("El producto ya se encuentra agregado");
     }
@@ -83,6 +83,9 @@ export const CartProvider = ({ children }) => {
         addItem,
         removeItem,
         clearCart,
+        showInfo,
+        showSuccess,
+        showError,
       }}
     >
       {children}

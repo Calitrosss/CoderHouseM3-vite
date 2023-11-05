@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import {
   Button,
@@ -11,6 +11,7 @@ import {
   CardBody,
   CardFooter,
   Stack,
+  ButtonGroup,
 } from "@chakra-ui/react";
 
 import { CartContext } from "../contexts/CartContext";
@@ -21,6 +22,8 @@ const Cart = () => {
   const { cart, cartCant, cartTotal, removeItem, clearCart } = useContext(CartContext);
 
   const [showCheckOut, setShowCheckOut] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleChekOutButton = () => {
     setShowCheckOut(showCheckOut ? false : true);
@@ -48,23 +51,32 @@ const Cart = () => {
             </Stack>
           </CardBody>
           <CardFooter>
-            {showCheckOut || (
-              <Button colorScheme="blue" isDisabled={!cartCant} onClick={handleChekOutButton}>
-                Finalizar Compra
-              </Button>
-            )}
+            <Button
+              colorScheme="blue"
+              isDisabled={!cartCant || showCheckOut}
+              onClick={handleChekOutButton}
+            >
+              Finalizar Compra
+            </Button>
           </CardFooter>
         </Card>
-        {showCheckOut || (
-          <Button
-            colorScheme="red"
-            maxW={"fit-content"}
-            margin="auto"
-            onClick={clearCart}
-            isDisabled={!cartCant}
-          >
-            Vaciar carrito
-          </Button>
+        {cartCant > 0 && !showCheckOut && (
+          <ButtonGroup justifyContent={"center"}>
+            <Button as={NavLink} to={"/"}>
+              Galería
+            </Button>
+            <Button colorScheme="red" mb={4} onClick={clearCart}>
+              Vaciar carrito
+            </Button>
+            <Button
+              variant={"outline"}
+              onClick={() => {
+                navigate(-1);
+              }}
+            >
+              Regresar
+            </Button>
+          </ButtonGroup>
         )}
         {cartCant === 0 && (
           <Button colorScheme="blue" as={NavLink} to={"/"}>
