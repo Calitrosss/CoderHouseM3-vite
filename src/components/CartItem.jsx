@@ -4,8 +4,13 @@ import { DeleteIcon } from "@chakra-ui/icons";
 
 const CartItem = ({ id, title, price, pictureUrl, quantity, onClick, isDisabled }) => {
   return (
-    <Card direction={{ base: "column", sm: "row" }} overflow="hidden" variant="outline">
-      <Image objectFit="cover" maxW={{ base: "100%", sm: "200px" }} src={pictureUrl} alt={title} />
+    <Card
+      direction={{ base: "column", sm: "row" }}
+      overflow="hidden"
+      variant="outline"
+      maxH="150px"
+    >
+      <Image objectFit="cover" maxW={{ base: "100%", sm: "150px" }} src={pictureUrl} alt={title} />
 
       <CardBody display={"flex"} flexDirection={"column"} justifyContent={"center"}>
         <Heading size="md">{title}</Heading>
