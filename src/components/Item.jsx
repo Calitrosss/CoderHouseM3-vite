@@ -28,7 +28,7 @@ const Item = ({ id, title, price, pictureUrl }) => {
         </Flex>
       </CardHeader>
       <CardBody>
-        <Image src={pictureUrl} alt={title} maxH={{ base: "100%", sm: "200px" }} />
+        <Image src={pictureUrl} alt={title} maxH={{ base: "100%", sm: "200px" }} w="100%" />
       </CardBody>
       <CardFooter
         justify="space-between"

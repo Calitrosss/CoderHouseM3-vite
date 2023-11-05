@@ -6,8 +6,6 @@ import {
   Text,
   FormControl,
   FormLabel,
-  // FormErrorMessage,
-  // FormHelperText,
   Input,
   Container,
   Button,
@@ -42,15 +40,6 @@ const CheckOut = ({ onCancel }) => {
       phone,
       email,
     };
-
-    // TODO: Eliminar código de pruebas
-    // setLoading(true);
-    // setTimeout(() => {
-    //   setOrderId("ABCDE001");
-    //   showSuccess("Orden creada");
-    //   clearCart();
-    //   setLoading(false);
-    // }, 2000);
 
     createOrder(userData);
   };

@@ -42,7 +42,7 @@ const ItemDetail = ({ id, title, description, price, stock, pictureUrl }) => {
   return (
     <Card maxW="sm">
       <CardBody>
-        <Image src={pictureUrl} alt={title} borderRadius="lg" />
+        <Image src={pictureUrl} alt={title} borderRadius="lg" w="100%" />
         <Stack mt="6" spacing="3">
           <Heading size="md">{title}</Heading>
           <Text>{description}</Text>
