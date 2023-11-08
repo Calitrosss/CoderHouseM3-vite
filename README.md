@@ -34,5 +34,5 @@ Se usan los servicios Firestore Database y Storage de Google Firebase para el al
 
 ## 🔗 Links
 
-[![portfolio](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=github)](https://github.com/Calitrosss)
+[![github](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=github)](https://github.com/Calitrosss)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/carlos-vivas-a81a3836/)
