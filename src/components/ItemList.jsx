@@ -4,11 +4,13 @@ import Item from "./Item";
 
 const ItemList = ({ products }) => {
   return (
-    <SimpleGrid spacing={4} templateColumns="repeat(auto-fill, minmax(200px, 1fr))">
-      {products.map((p) => {
-        return <Item key={p.id} {...p} />;
-      })}
-    </SimpleGrid>
+    products.length && (
+      <SimpleGrid spacing={4} templateColumns="repeat(auto-fill, minmax(200px, 1fr))">
+        {products.map((p) => {
+          return <Item key={p.id} {...p} />;
+        })}
+      </SimpleGrid>
+    )
   );
 };
 

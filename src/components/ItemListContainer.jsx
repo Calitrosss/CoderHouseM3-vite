@@ -1,12 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import { Heading } from "@chakra-ui/react";
 
 import ItemList from "./ItemList";
 import Loader from "./Loader";
+import { CartContext } from "../contexts/CartContext";
 
 import { getDocs, collection, query, where, orderBy, getDoc, doc } from "firebase/firestore";
 import { db, itemCollection, categoryCollection } from "../services/firebase/firebaseConfig";
@@ -17,6 +18,8 @@ const ItemListContainer = ({ greeting }) => {
   const [loading, setLoading] = useState(true);
 
   const { categoryId } = useParams();
+
+  const { showError } = useContext(CartContext);
 
   const getProducts = async () => {
     try {
@@ -46,7 +49,7 @@ const ItemListContainer = ({ greeting }) => {
         setCategory("Especialidad");
       }
     } catch (error) {
-      console.error(error);
+      showError(error);
     } finally {
       setLoading(false);
     }

@@ -52,8 +52,6 @@ const ItemDetail = ({ id, title, description, price, stock, pictureUrl }) => {
             </Text>
             <Button
               variant={"outline"}
-              // w="100%"
-              // maxW="70%"
               onClick={() => {
                 navigate(-1);
               }}

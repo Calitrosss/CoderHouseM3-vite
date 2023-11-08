@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import { Heading, SimpleGrid, Button } from "@chakra-ui/react";
@@ -8,6 +8,7 @@ import { NavLink } from "react-router-dom";
 
 import ItemDetail from "./ItemDetail";
 import Loader from "./Loader";
+import { CartContext } from "../contexts/CartContext";
 
 import { getDoc, doc } from "firebase/firestore";
 import { db, itemCollection } from "../services/firebase/firebaseConfig";
@@ -17,6 +18,8 @@ const ItemDetailContainer = ({ greeting }) => {
   const [loading, setLoading] = useState(true);
 
   const { itemId } = useParams();
+
+  const { showError } = useContext(CartContext);
 
   const getProductById = async () => {
     try {
@@ -30,7 +33,7 @@ const ItemDetailContainer = ({ greeting }) => {
         setProduct({});
       }
     } catch (error) {
-      console.error(error);
+      showError(error);
     } finally {
       setLoading(false);
     }
@@ -64,9 +67,11 @@ const ItemDetailContainer = ({ greeting }) => {
       <Heading as={"h1"} size={"lg"} textAlign={"center"} p={4}>
         {greeting}
       </Heading>
-      <SimpleGrid spacing={4} autoColumns justifyContent="center">
-        <ItemDetail {...product} />
-      </SimpleGrid>
+      {product.id && (
+        <SimpleGrid spacing={4} autoColumns justifyContent="center">
+          <ItemDetail {...product} />
+        </SimpleGrid>
+      )}
     </>
   );
 };

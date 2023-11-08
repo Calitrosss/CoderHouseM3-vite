@@ -74,7 +74,7 @@ const CheckOut = ({ onCancel }) => {
 
       clearCart();
     } catch (error) {
-      console.error(error);
+      showError(error);
     } finally {
       setLoading(false);
     }

@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import { Image, Tag, TagLabel } from "@chakra-ui/react";
 import BasketImg from "../assets/basket.svg";
 
-// eslint-disable-next-line react/prop-types
 const CartWidget = ({ itemsCount }) => {
   return (
     <Tag>
